@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El PolloJRC - Restaurante & Pollería</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f5f0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #d9534f;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #ffd700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 500px;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/500');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #d9534f;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #c9302c;
+        }
+        
+        /* Sección Especialidades */
+        .especialidades {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #d9534f;
+            font-size: 2rem;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .menu-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .menu-item-content {
+            padding: 20px;
+        }
+        
+        .menu-item h3 {
+            margin-bottom: 10px;
+            color: #d9534f;
+        }
+        
+        .menu-item p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: #333;
+            font-size: 1.2rem;
+        }
+        
+        /* Sección Acerca de */
+        .acerca-de {
+            padding: 4rem 0;
+            background-color: #fff9ef;
+        }
+        
+        .acerca-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .acerca-img {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .acerca-img img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .acerca-content h2 {
+            color: #d9534f;
+            margin-bottom: 20px;
+        }
+        
+        /* Sección Contacto */
+        .contacto {
+            padding: 4rem 0;
+        }
+        
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .contacto-info, .mapa {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .contacto-info h3 {
+            color: #d9534f;
+            margin-bottom: 15px;
+        }
+        
+        .contacto-detalle {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contacto-icono {
+            margin-right: 10px;
+            color: #d9534f;
+            font-size: 1.2rem;
+        }
+        
+        .mapa iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            border-radius: 8px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-col h4 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #888;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            .acerca-grid, .contacto-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">El Pollo <span>Dorado</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#menu">Menú</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>El auténtico sabor del pollo a la brasa</h1>
+            <p>La mejor pollería de la ciudad con más de 15 años de tradición familiar. Recetas auténticas con ingredientes frescos y de calidad.</p>
+            <a href="#menu" class="btn">Ver nuestro menú</a>
+        </div>
+    </section>
+    
+    <!-- Especialidades -->
+    <section class="especialidades" id="menu">
+        <div class="container">
+            <h2 class="section-title">Nuestras Especialidades</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="/api/placeholder/300/200" alt="Pollo a la Brasa">
+                    <div class="menu-item-content">
+                        <h3>Pollo a la Brasa</h3>
+                        <p>Nuestro plato estrella. Pollo marinado con especias secretas y asado lentamente al carbón.</p>
+                        <div class="price">Desde $12.99</div>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <img src="/api/placeholder/300/200" alt="Anticuchos">
+                    <div class="menu-item-content">
+                        <h3>Anticuchos de Corazón</h3>
+                        <p>Tiernos anticuchos de corazón de res marinados y asados a la parrilla. Con papas y choclo.</p>
+                        <div class="price">$10.50</div>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <img src="/api/placeholder/300/200" alt="Chaufa">
+                    <div class="menu-item-content">
+                        <h3>Arroz Chaufa de Pollo</h3>
+                        <p>Delicioso arroz salteado con trozos de pollo, verduras, huevo y nuestra salsa especial.</p>
+                        <div class="price">$11.99</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Acerca de -->
+    <section class="acerca-de" id="nosotros">
+        <div class="container">
+            <div class="acerca-grid">
+                <div class="acerca-img">
+                    <img src="/api/placeholder/600/400" alt="Nuestra Historia">
+                </div>
+                <div class="acerca-content">
+                    <h2>Nuestra Historia</h2>
+                    <p>El Pollo Dorado nació en 2010 como un pequeño restaurante familiar con una misión clara: ofrecer el mejor pollo a la brasa con un servicio excepcional.</p>
+                    <p>Después de más de una década, nos hemos convertido en uno de los restaurantes más queridos de la ciudad, manteniendo la misma pasión y dedicación del primer día.</p>
+                    <p>Nuestro secreto es simple: ingredientes frescos, recetas tradicionales y mucho amor por lo que hacemos. Cada plato que servimos lleva el sello de calidad que nos caracteriza.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contacto -->
+    <section class="contacto" id="contacto">
+        <div class="container">
+            <h2 class="section-title">Contáctanos</h2>
+            <div class="contacto-grid">
+                <div class="contacto-info">
+                    <h3>Información de Contacto</h3>
+                    <div class="contacto-detalle">
+                        <div class="contacto-icono">📍</div>
+                        <div>
+                            <p>Av. Principal 123, Ciudad</p>
+                        </div>
+                    </div>
+                    <div class="contacto-detalle">
+                        <div class="contacto-icono">📞</div>
+                        <div>
+                            <p>+123 456 7890</p>
+                        </div>
+                    </div>
+                    <div class="contacto-detalle">
+                        <div class="contacto-icono">✉️</div>
+                        <div>
+                            <p>info@elpolllodorado.com</p>
+                        </div>
+                    </div>
+                    <div class="contacto-detalle">
+                        <div class="contacto-icono">🕒</div>
+                        <div>
+                            <p><strong>Lunes a Viernes:</strong> 12:00 - 22:00</p>
+                            <p><strong>Sábados y Domingos:</strong> 12:00 - 23:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mapa">
+                    <!-- Aquí iría un mapa real, por ahora un placeholder -->
+                    <img src="/api/placeholder/600/300" alt="Ubicación en el mapa" style="width:100%; height:300px; object-fit:cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>El Pollo Dorado</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#menu">Menú</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="#">Delivery</a></li>
+                        <li><a href="#">Eventos</a></li>
+                        <li><a href="#">Catering</a></li>
+                        <li><a href="#">Reservas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Síguenos</h4>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">TikTok</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 El Pollo Dorado. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
