@@ -4,451 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pollería JRC - Jugosos, Ricos y Calientitos</title>
-    <style>
-        /* Estilos generales */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        
-        body {
-            background-color: #000;
-            color: #fff;
-            line-height: 1.6;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Header */
-        header {
-            background-color: #000;
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .logo {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #FFD700;
-        }
-        
-        .logo span {
-            color: #e73c30;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 20px;
-        }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: #FFD700;
-        }
-        
-        /* Hero Section */
-        .hero {
-            height: 500px;
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/api/placeholder/1200/500');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            z-index: 2;
-        }
-        
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            color: #FFD700;
-            text-transform: uppercase;
-        }
-        
-        .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: #e73c30;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: #d32f2f;
-        }
-        
-        /* Secciones de Menú */
-        .section-menu {
-            padding: 4rem 0;
-            position: relative;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #FFD700;
-            font-size: 3rem;
-            text-transform: uppercase;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .section-title:before, .section-title:after {
-            content: "❯";
-            color: #FFD700;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        .section-title:before {
-            left: -30px;
-        }
-        
-        .section-title:after {
-            right: -30px;
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            color: #fff;
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            font-style: italic;
-        }
-        
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .menu-item {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            overflow: hidden;
-            padding: 20px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-        }
-        
-        .menu-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(231, 60, 48, 0.2);
-        }
-        
-        .menu-item h3 {
-            color: #FFD700;
-            margin-bottom: 10px;
-            font-size: 1.5rem;
-        }
-        
-        .menu-item p {
-            color: #ccc;
-            margin-bottom: 15px;
-        }
-        
-        .price {
-            font-weight: bold;
-            color: #fff;
-            font-size: 1.3rem;
-            background-color: #e73c30;
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-        }
-        
-        .menu-item-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-        
-        .menu-item-text {
-            flex: 1;
-        }
-        
-        /* Sección Contacto */
-        .contacto {
-            padding: 4rem 0;
-            background-color: #111;
-        }
-        
-        .contacto-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-        
-        .contacto-info, .mapa {
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 8px;
-        }
-        
-        .contacto-info h3 {
-            color: #FFD700;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-        
-        .contacto-detalle {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .contacto-icono {
-            margin-right: 15px;
-            color: #e73c30;
-            font-size: 1.5rem;
-        }
-        
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            background-color: #25D366;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 20px;
-            transition: background-color 0.3s;
-        }
-        
-        .whatsapp-btn:hover {
-            background-color: #128C7E;
-        }
-        
-        .whatsapp-icon {
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #000;
-            color: white;
-            padding: 3rem 0 2rem;
-            border-top: 3px solid #e73c30;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-col h4 {
-            color: #FFD700;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-        
-        .footer-col ul {
-            list-style: none;
-        }
-        
-        .footer-col ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-col ul li a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-col ul li a:hover {
-            color: white;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: #e73c30;
-            color: white;
-            border-radius: 50%;
-            text-decoration: none;
-            transition: background-color 0.3s;
-            font-size: 1.2rem;
-        }
-        
-        .social-link:hover {
-            background-color: #FFD700;
-            color: #000;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #333;
-            color: #888;
-        }
-        
-        /* Sección Específica para Pollos */
-        .brasas-section {
-            background-color: #111;
-        }
-        
-        /* Sección Específica para Parrillas */
-        .parrillas-section {
-            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('/api/placeholder/1200/800');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        
-        /* Sección Específica para Platos a la Carta */
-        .carta-section {
-            background-color: #0c0c0c;
-        }
-        
-        /* Sección Específica para Bebidas */
-        .bebidas-section {
-            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('/api/placeholder/1200/800');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .logo-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                margin-top: 15px;
-                justify-content: center;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .contacto-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .menu-item-content {
-                flex-direction: column;
-            }
-            
-            .price {
-                margin-top: 10px;
-            }
-        }
-        
-        /* Elementos decorativos */
-        .decorative-element {
-            position: absolute;
-            z-index: 1;
-        }
-        
-        .decorative-yellow {
-            background-color: #FFD700;
-            border-radius: 50%;
-            opacity: 0.4;
-        }
-        
-        .decorative-red {
-            background-color: #e73c30;
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            opacity: 0.4;
-        }
-        
-        .yellow-blob-1 {
-            width: 150px;
-            height: 150px;
-            top: 10%;
-            left: 5%;
-        }
-        
-        .red-blob-1 {
-            width: 180px;
-            height: 180px;
-            top: 30%;
-            right: 5%;
-        }
-        
-        .yellow-blob-2 {
-            width: 120px;
-            height: 120px;
-            bottom: 10%;
-            right: 10%;
-        }
-        
-        .red-blob-2 {
-            width: 200px;
-            height: 200px;
-            bottom: 20%;
-            left: 8%;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="header">
         <div class="container">
             <div class="logo-container">
-                <div class="logo">JRC <span>Pollería</span></div>
+                <div class="logo">
+                    <img src="img/logo.png" alt="Logo JRC">
+                    <div class="logo-text">JRC <span>Pollería</span></div>
+                </div>
                 <nav>
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
@@ -465,184 +32,206 @@
     
     <!-- Hero Section -->
     <section class="hero" id="inicio">
-        <div class="decorative-element decorative-yellow yellow-blob-1"></div>
-        <div class="decorative-element decorative-red red-blob-1"></div>
         <div class="hero-content">
             <h1>Bienvenidos</h1>
-            <p>NO IMPORTA QUÉ ELIJAS... AQUÍ TODO ES UNA DELICIA</p>
+            <p class="hero-subtitle">NO IMPORTA QUÉ ELIJAS... AQUÍ TODO ES UNA DELICIA</p>
+            <img src="img/mascota.png" alt="Mascota JRC Pollería" class="hero-mascot">
             <p>JUGOSOS, RICOS Y CALIENTITOS...</p>
-            <a href="#brasas" class="btn">Ver nuestro menú</a>
+            <a href="#brasas" class="btn">Ver nuestro menú <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
     
     <!-- Pollos a la Brasa -->
-    <section class="section-menu brasas-section" id="brasas">
+    <section class="section-menu" id="brasas">
         <div class="container">
-            <h2 class="section-title">Brasas</h2>
-            <p class="section-subtitle">El dorado perfecto en tu plato</p>
+            <div class="section-header">
+                <h2 class="section-title">Brasas</h2>
+                <p class="section-subtitle">El dorado perfecto en tu plato</p>
+            </div>
             
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
+            <div class="menu-container">
+                <div class="featured-items">
+                    <h3 class="featured-title">Nuestras Especialidades</h3>
+                    <div class="featured-grid">
+                        <div class="featured-item">
+                            <img src="img/pollos/pollo-entero.jpg" alt="Pollo a la Brasa Entero">
                             <h3>01 POLLO</h3>
                             <p>Con papas fritas + Cremas + Ensalada</p>
+                            <span class="featured-price">S/ 55.00</span>
                         </div>
-                        <div class="price">S/ 55.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
+                        
+                        <div class="featured-item">
+                            <img src="img/pollos/medio-pollo.jpg" alt="Medio Pollo a la Brasa">
                             <h3>1/2 POLLO</h3>
                             <p>Con papas fritas + Cremas + Ensalada</p>
+                            <span class="featured-price">S/ 30.00</span>
                         </div>
-                        <div class="price">S/ 30.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
+                        
+                        <div class="featured-item">
+                            <img src="img/pollos/cuarto-pollo.jpg" alt="Cuarto de Pollo a la Brasa">
                             <h3>1/4 POLLO</h3>
                             <p>Con papas fritas + Cremas + Ensalada</p>
+                            <span class="featured-price">S/ 15.00</span>
                         </div>
-                        <div class="price">S/ 15.00</div>
                     </div>
                 </div>
                 
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>MOSTRITO</h3>
-                            <p>1/4 Pollo a la brasa + Chaufa + Papas fritas + Cremas</p>
+                <div class="menu-grid" style="margin-top: 50px;">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/pollos/mostrito.jpg" alt="Mostrito">
                         </div>
-                        <div class="price">S/ 18.00</div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>MOSTRITO</h3>
+                                <p>1/4 Pollo a la brasa + Chaufa + Papas fritas + Cremas</p>
+                            </div>
+                            <div class="price">S/ 18.00</div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>SALCHIPAPA</h3>
-                            <p>Con papas fritas + Hotdog + Cremas + Ensalada</p>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/pollos/salchipapa.jpg" alt="Salchipapa">
                         </div>
-                        <div class="price">S/ 7.00</div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>SALCHIPAPA</h3>
+                                <p>Con papas fritas + Hotdog + Cremas + Ensalada</p>
+                            </div>
+                            <div class="price">S/ 7.00</div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>SALCHIBRASA</h3>
-                            <p>1/8 Pollo + Papas fritas + Hot dog + Cremas + Ensalada</p>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/pollos/salchibrasa.jpg" alt="Salchibrasa">
                         </div>
-                        <div class="price">S/ 12.00</div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>SALCHIBRASA</h3>
+                                <p>1/8 Pollo + Papas fritas + Hot dog + Cremas + Ensalada</p>
+                            </div>
+                            <div class="price">S/ 12.00</div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+    
+    <!-- Promociones -->
+    <section class="promo-section">
+        <div class="container">
+            <h2 class="promo-title">Nuestras Promos</h2>
+            <p class="section-subtitle">+ sabor - precio</p>
             
-            <h3 class="section-subtitle" style="margin-top: 50px; color: #FFD700;">NUESTRAS PROMOS</h3>
-            
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>OPCIÓN 01</h3>
-                            <p>01 Pollo + Chaufa + Papas fritas + Cremas + Ensalada + 01 Gaseosa Pepsi 1LT</p>
-                        </div>
-                        <div class="price">S/ 65.00</div>
-                    </div>
+            <div class="promo-grid">
+                <div class="promo-item">
+                    <h3>OPCIÓN 01</h3>
+                    <p>01 Pollo + Chaufa + Papas fritas + Cremas + Ensalada + 01 Gaseosa Pepsi 1LT</p>
+                    <div class="promo-price">S/ 65.00</div>
                 </div>
                 
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>OPCIÓN 02</h3>
-                            <p>1/2 Pollo + Chaufa + Papas fritas + Cremas + Ensalada + 01 Gaseosa Pepsi 1LT</p>
-                        </div>
-                        <div class="price">S/ 42.00</div>
-                    </div>
+                <div class="promo-item">
+                    <h3>OPCIÓN 02</h3>
+                    <p>1/2 Pollo + Chaufa + Papas fritas + Cremas + Ensalada + 01 Gaseosa Pepsi 1LT</p>
+                    <div class="promo-price">S/ 42.00</div>
                 </div>
                 
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>OPCIÓN 03</h3>
-                            <p>1/4 Pollo + Chaufa + Cremas + 01 Pepsi personal</p>
-                        </div>
-                        <div class="price">S/ 19.00</div>
-                    </div>
+                <div class="promo-item">
+                    <h3>OPCIÓN 03</h3>
+                    <p>1/4 Pollo + Chaufa + Cremas + 01 Pepsi personal</p>
+                    <div class="promo-price">S/ 19.00</div>
                 </div>
             </div>
         </div>
     </section>
     
     <!-- Parrillas -->
-    <section class="section-menu parrillas-section" id="parrillas">
+    <section class="section-menu" id="parrillas">
         <div class="container">
-            <h2 class="section-title">Parrillas</h2>
-            <p class="section-subtitle">JUGOSAS, AHUMADAS, IRRESISTIBLES</p>
+            <div class="section-header">
+                <h2 class="section-title">Parrillas</h2>
+                <p class="section-subtitle">JUGOSAS, AHUMADAS, IRRESISTIBLES</p>
+            </div>
             
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
+            <div class="menu-container">
+                <div class="featured-items">
+                    <div class="featured-grid">
+                        <div class="featured-item">
+                            <img src="img/parrillas/parrilla-especial.jpg" alt="Parrilla Especial">
                             <h3>01 PARRILLA ESPECIAL PARA DOS PERSONAS</h3>
                             <p>1/2 Pollo + 02 Anticuchos + 01 Chorizo + 01 Chuleta + 01 Hotdog + Papas fritas + Cremas + Ensalada</p>
+                            <span class="featured-price">S/ 60.00</span>
                         </div>
-                        <div class="price">S/ 60.00</div>
                     </div>
                 </div>
                 
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>BROCHETAS DE POLLO</h3>
-                            <p>02 Brochetas de pollo + Papas fritas + Cremas + Ensalada</p>
+                <div class="menu-grid" style="margin-top: 50px;">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/parrillas/brochetas.jpg" alt="Brochetas">
                         </div>
-                        <div class="price">S/ 12.00</div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>BROCHETAS DE POLLO</h3>
+                                <p>02 Brochetas de pollo + Papas fritas + Cremas + Ensalada</p>
+                            </div>
+                            <div class="price">S/ 12.00</div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>01 CHULETA</h3>
-                            <p>Con papas fritas + Cremas + Ensalada</p>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/parrillas/chuleta.jpg" alt="Chuleta">
                         </div>
-                        <div class="price">S/ 15.00</div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>01 CHULETA</h3>
+                                <p>Con papas fritas + Cremas + Ensalada</p>
+                            </div>
+                            <div class="price">S/ 15.00</div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>01 CHURRASCO</h3>
-                            <p>Con papas fritas + Cremas + Ensalada</p>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/parrillas/churrasco.jpg" alt="Churrasco">
                         </div>
-                        <div class="price">S/ 18.00</div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>01 CHURRASCO</h3>
+                                <p>Con papas fritas + Cremas + Ensalada</p>
+                            </div>
+                            <div class="price">S/ 18.00</div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>PECHUGA A LA PARRILLA</h3>
-                            <p>Con papas fritas + Cremas + Ensalada</p>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/parrillas/pechuga-parrilla.jpg" alt="Pechuga a la Parrilla">
                         </div>
-                        <div class="price">S/ 18.00</div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>PECHUGA A LA PARRILLA</h3>
+                                <p>Con papas fritas + Cremas + Ensalada</p>
+                            </div>
+                            <div class="price">S/ 18.00</div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>PECHUGA RELLENA</h3>
-                            <p>01 Pechuga de pollo + Queso mozzarella + Jamón + Tocino + Papas fritas + Cremas + Ensalada</p>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/parrillas/pechuga-rellena.jpg" alt="Pechuga Rellena">
                         </div>
-                        <div class="price">S/ 22.00</div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>PECHUGA RELLENA</h3>
+                                <p>01 Pechuga de pollo + Queso mozzarella + Jamón + Tocino + Papas fritas + Cremas + Ensalada</p>
+                            </div>
+                            <div class="price">S/ 22.00</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -650,223 +239,259 @@
     </section>
     
     <!-- Platos a la Carta -->
-    <section class="section-menu carta-section" id="carta">
+    <section class="section-menu" id="carta">
         <div class="container">
-            <h2 class="section-title">Platos a la Carta</h2>
-            <p class="section-subtitle">LA MEJOR COMBINACIÓN DE SABORES EN UN SOLO LUGAR</p>
-            
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>MOLLEJITAS</h3>
-                            <p>Con papas fritas + Cremas + Ensalada</p>
-                        </div>
-                        <div class="price">S/ 15.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>CHAUFA DE POLLO</h3>
-                        </div>
-                        <div class="price">S/ 12.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>CHAUFA DE CARNE</h3>
-                        </div>
-                        <div class="price">S/ 15.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>CHAUFA DE CHANCHO</h3>
-                        </div>
-                        <div class="price">S/ 15.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>AEROPUERTO</h3>
-                        </div>
-                        <div class="price">S/ 15.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>BROASTER</h3>
-                            <p>Con papas fritas + Cremas + Ensalada</p>
-                        </div>
-                        <div class="price">S/ 18.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>CHICHARRON DE POLLO</h3>
-                            <p>06 Porciones de chicharrón + papas fritas + Cremas + Ensalada</p>
-                        </div>
-                        <div class="price">S/ 20.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>MILANESA DE POLLO</h3>
-                            <p>Con papas fritas + Cremas + Ensalada</p>
-                        </div>
-                        <div class="price">S/ 15.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>MILANESA DE CARNE</h3>
-                            <p>Con papas fritas + Cremas + Ensalada</p>
-                        </div>
-                        <div class="price">S/ 18.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>LOMO SALTADO DE POLLO</h3>
-                        </div>
-                        <div class="price">S/ 18.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>LOMO SALTADO DE CARNE</h3>
-                        </div>
-                        <div class="price">S/ 22.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>TALLARIN SALTADO DE POLLO</h3>
-                        </div>
-                        <div class="price">S/ 18.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>TALLARIN SALTADO DE CARNE</h3>
-                        </div>
-                        <div class="price">S/ 22.00</div>
-                    </div>
-                </div>
+            <div class="section-header">
+                <h2 class="section-title">Platos a la Carta</h2>
+                <p class="section-subtitle">LA MEJOR COMBINACIÓN DE SABORES EN UN SOLO LUGAR</p>
             </div>
             
-            <h3 class="section-subtitle" style="margin-top: 50px; color: #FFD700;">SOPAS</h3>
-            <p class="section-subtitle">CALORCITO QUE ABRAZA EL ALMA</p>
-            
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>SOPA A LA MINUTA</h3>
+            <div class="menu-container">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/carta/mollejitas.jpg" alt="Mollejitas">
                         </div>
-                        <div class="price">S/ 12.00</div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>MOLLEJITAS</h3>
+                                <p>Con papas fritas + Cremas + Ensalada</p>
+                            </div>
+                            <div class="price">S/ 15.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/carta/chaufa-pollo.jpg" alt="Chaufa de Pollo">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>CHAUFA DE POLLO</h3>
+                            </div>
+                            <div class="price">S/ 12.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/carta/chaufa-carne.jpg" alt="Chaufa de Carne">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>CHAUFA DE CARNE</h3>
+                            </div>
+                            <div class="price">S/ 15.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>CHAUFA DE CHANCHO</h3>
+                            </div>
+                            <div class="price">S/ 15.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>AEROPUERTO</h3>
+                            </div>
+                            <div class="price">S/ 15.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/carta/broaster.jpg" alt="Broaster">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>BROASTER</h3>
+                                <p>Con papas fritas + Cremas + Ensalada</p>
+                            </div>
+                            <div class="price">S/ 18.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/carta/chicharron.jpg" alt="Chicharrón de Pollo">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>CHICHARRON DE POLLO</h3>
+                                <p>06 Porciones de chicharrón + papas fritas + Cremas + Ensalada</p>
+                            </div>
+                            <div class="price">S/ 20.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>MILANESA DE POLLO</h3>
+                                <p>Con papas fritas + Cremas + Ensalada</p>
+                            </div>
+                            <div class="price">S/ 15.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>MILANESA DE CARNE</h3>
+                                <p>Con papas fritas + Cremas + Ensalada</p>
+                            </div>
+                            <div class="price">S/ 18.00</div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>CALDO DE DIETA</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/carta/lomo-saltado.jpg" alt="Lomo Saltado">
                         </div>
-                        <div class="price">S/ 10.00</div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>LOMO SALTADO DE POLLO</h3>
+                            </div>
+                            <div class="price">S/ 18.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>LOMO SALTADO DE CARNE</h3>
+                            </div>
+                            <div class="price">S/ 22.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>TALLARIN SALTADO DE POLLO</h3>
+                            </div>
+                            <div class="price">S/ 18.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>TALLARIN SALTADO DE CARNE</h3>
+                            </div>
+                            <div class="price">S/ 22.00</div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>CALDO DE GALLINA</h3>
-                            <p>(Sábados y Domingos)</p>
+                <h3 class="category-title">SOPAS</h3>
+                <p class="section-subtitle">CALORCITO QUE ABRAZA EL ALMA</p>
+                
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/sopas/sopa-minuta.jpg" alt="Sopa a la Minuta">
                         </div>
-                        <div class="price">S/ 10.00</div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>SOPA A LA MINUTA</h3>
+                            </div>
+                            <div class="price">S/ 12.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>CALDO DE DIETA</h3>
+                            </div>
+                            <div class="price">S/ 10.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/sopas/caldo-gallina.jpg" alt="Caldo de Gallina">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>CALDO DE GALLINA</h3>
+                                <p>(Sábados y Domingos)</p>
+                            </div>
+                            <div class="price">S/ 10.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>AGUADITO</h3>
+                            </div>
+                            <div class="price">S/ 6.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>SOPA CRIOLLA</h3>
+                            </div>
+                            <div class="price">S/ 15.00</div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>AGUADITO</h3>
-                        </div>
-                        <div class="price">S/ 6.00</div>
-                    </div>
-                </div>
+                <h3 class="category-title">ADICIONALES</h3>
+                <p class="section-subtitle">PORQUE UN EXTRA NUNCA ESTÁ DE MÁS</p>
                 
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>SOPA CRIOLLA</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/adicionales/papas-fritas.jpg" alt="Papas Fritas">
                         </div>
-                        <div class="price">S/ 15.00</div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>PORCIÓN DE PAPAS FRITAS</h3>
+                            </div>
+                            <div class="price">S/ 8.00</div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            
-            <h3 class="section-subtitle" style="margin-top: 50px; color: #FFD700;">ADICIONALES</h3>
-            <p class="section-subtitle">PORQUE UN EXTRA NUNCA ESTÁ DE MÁS</p>
-            
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>PORCIÓN DE PAPAS FRITAS</h3>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>1/2 PORCIÓN DE PAPAS FRITAS</h3>
+                            </div>
+                            <div class="price">S/ 4.00</div>
                         </div>
-                        <div class="price">S/ 8.00</div>
                     </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>1/2 PORCIÓN DE PAPAS FRITAS</h3>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>PORCIÓN DE ARROZ BLANCO</h3>
+                            </div>
+                            <div class="price">S/ 4.00</div>
                         </div>
-                        <div class="price">S/ 4.00</div>
                     </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>PORCIÓN DE ARROZ BLANCO</h3>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/adicionales/ensalada.jpg" alt="Ensalada Clásica">
                         </div>
-                        <div class="price">S/ 4.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>PORCIÓN DE ENSALADA CLÁSICA</h3>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>PORCIÓN DE ENSALADA CLÁSICA</h3>
+                            </div>
+                            <div class="price">S/ 5.00</div>
                         </div>
-                        <div class="price">S/ 5.00</div>
                     </div>
                 </div>
             </div>
@@ -874,346 +499,193 @@
     </section>
     
     <!-- Bebidas -->
-    <section class="section-menu bebidas-section" id="bebidas">
+    <section class="section-menu" id="bebidas">
         <div class="container">
-            <h2 class="section-title">Bebidas</h2>
-            <p class="section-subtitle">PARA CALMAR LA SED Y SUBIR EL ÁNIMO</p>
-            
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>COCA COLA 3L</h3>
-                        </div>
-                        <div class="price">S/ 15.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>COCA COLA 1.5L</h3>
-                        </div>
-                        <div class="price">S/ 9.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>COCA COLA 1L</h3>
-                        </div>
-                        <div class="price">S/ 7.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>COCA COLA 500ml</h3>
-                        </div>
-                        <div class="price">S/ 4.50</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>INKA COLA 3L</h3>
-                        </div>
-                        <div class="price">S/ 15.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>INKA COLA 1.5L</h3>
-                        </div>
-                        <div class="price">S/ 9.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>INKA COLA 1L</h3>
-                        </div>
-                        <div class="price">S/ 7.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>INKA COLA 500ml</h3>
-                        </div>
-                        <div class="price">S/ 4.50</div>
-                    </div>
-                </div>
+            <div class="section-header">
+                <h2 class="section-title">Bebidas</h2>
+                <p class="section-subtitle">PARA CALMAR LA SED Y SUBIR EL ÁNIMO</p>
             </div>
             
-            <div class="menu-grid" style="margin-top: 30px;">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>PEPSI 2L</h3>
+            <div class="menu-container">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/bebidas/coca-cola.jpg" alt="Coca Cola">
                         </div>
-                        <div class="price">S/ 9.00</div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>COCA COLA 3L</h3>
+                            </div>
+                            <div class="price">S/ 15.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>COCA COLA 1.5L</h3>
+                            </div>
+                            <div class="price">S/ 9.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>COCA COLA 1L</h3>
+                            </div>
+                            <div class="price">S/ 7.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>COCA COLA 500ml</h3>
+                            </div>
+                            <div class="price">S/ 4.50</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/bebidas/inka-cola.jpg" alt="Inka Cola">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>INKA COLA 3L</h3>
+                            </div>
+                            <div class="price">S/ 15.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>INKA COLA 1.5L</h3>
+                            </div>
+                            <div class="price">S/ 9.00</div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>PEPSI 1L</h3>
+                <h3 class="category-title">REFRESCOS</h3>
+                
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/bebidas/chicha.jpg" alt="Chicha">
                         </div>
-                        <div class="price">S/ 5.50</div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>CHICHA 1L</h3>
+                            </div>
+                            <div class="price">S/ 12.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>CEBADA 1L</h3>
+                            </div>
+                            <div class="price">S/ 12.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>MARACUYÁ 1L</h3>
+                            </div>
+                            <div class="price">S/ 12.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/bebidas/maracuya-frozen.jpg" alt="Maracuyá Frozen">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>MARACUYÁ FROZEN 1L</h3>
+                            </div>
+                            <div class="price">S/ 15.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>LIMONADA FROZEN 1L</h3>
+                            </div>
+                            <div class="price">S/ 15.00</div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>PEPSI jumbo</h3>
-                        </div>
-                        <div class="price">S/ 4.50</div>
-                    </div>
-                </div>
+                <h3 class="category-title">TRAGOS</h3>
+                <p class="section-subtitle">MENOS ESTRÉS, MÁS BRINDIS</p>
                 
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>PEPSI 600ml</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/tragos/pisco-sour.jpg" alt="Pisco Sour">
                         </div>
-                        <div class="price">S/ 3.50</div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>PISCO SOUR</h3>
+                            </div>
+                            <div class="price">S/ 12.00</div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>PEPSI personal</h3>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>MARACUYÁ SOUR</h3>
+                            </div>
+                            <div class="price">S/ 12.00</div>
                         </div>
-                        <div class="price">S/ 2.00</div>
                     </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>AGUA sin gas</h3>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>CHILCANO</h3>
+                            </div>
+                            <div class="price">S/ 12.00</div>
                         </div>
-                        <div class="price">S/ 2.00</div>
                     </div>
-                </div>
-            </div>
-            
-            <div class="menu-grid" style="margin-top: 30px;">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>CHICHA 1L</h3>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="img/tragos/cerveza.jpg" alt="Cerveza">
                         </div>
-                        <div class="price">S/ 12.00</div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>CERVEZA PILSEN</h3>
+                            </div>
+                            <div class="price">S/ 8.00</div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>CEBADA 1L</h3>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>CERVEZA CORONA</h3>
+                            </div>
+                            <div class="price">S/ 7.00</div>
                         </div>
-                        <div class="price">S/ 12.00</div>
                     </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>MARACUYÁ 1L</h3>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>CERVEZA CUSQUEÑA</h3>
+                            </div>
+                            <div class="price">S/ 6.00</div>
                         </div>
-                        <div class="price">S/ 12.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>MARACUYÁ FROZEN 1L</h3>
-                        </div>
-                        <div class="price">S/ 15.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>LIMONADA FROZEN 1L</h3>
-                        </div>
-                        <div class="price">S/ 15.00</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="menu-grid" style="margin-top: 30px;">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>MANZANILLA</h3>
-                        </div>
-                        <div class="price">S/ 3.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>TÉ</h3>
-                        </div>
-                        <div class="price">S/ 3.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>ANÍS</h3>
-                        </div>
-                        <div class="price">S/ 3.00</div>
-                    </div>
-                </div>
-            </div>
-            
-            <h3 class="section-subtitle" style="margin-top: 50px; color: #FFD700;">TRAGOS</h3>
-            <p class="section-subtitle">MENOS ESTRÉS, MÁS BRINDIS</p>
-            
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>VINO BOTELLA</h3>
-                        </div>
-                        <div class="price">S/ 28.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>PISCO BOTELLA</h3>
-                        </div>
-                        <div class="price">S/ 28.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>PISCO JARRA</h3>
-                        </div>
-                        <div class="price">S/ 15.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>PISCO SOUR</h3>
-                        </div>
-                        <div class="price">S/ 12.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>MARACUYÁ SOUR</h3>
-                        </div>
-                        <div class="price">S/ 12.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>CHILCANO</h3>
-                        </div>
-                        <div class="price">S/ 12.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>ALGARROBINA</h3>
-                        </div>
-                        <div class="price">S/ 12.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>PIÑA COLADA</h3>
-                        </div>
-                        <div class="price">S/ 12.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>CUBA LIBRE</h3>
-                        </div>
-                        <div class="price">S/ 12.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>AMOR EN LLAMAS</h3>
-                        </div>
-                        <div class="price">S/ 12.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>MACHU PICCHU</h3>
-                        </div>
-                        <div class="price">S/ 12.00</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="menu-grid" style="margin-top: 30px;">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>CERVEZA PILSEN</h3>
-                        </div>
-                        <div class="price">S/ 8.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>CERVEZA CORONA</h3>
-                        </div>
-                        <div class="price">S/ 7.00</div>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <div class="menu-item-text">
-                            <h3>CERVEZA CUSQUEÑA</h3>
-                        </div>
-                        <div class="price">S/ 6.00</div>
                     </div>
                 </div>
             </div>
@@ -1223,35 +695,46 @@
     <!-- Contacto -->
     <section class="contacto" id="contacto">
         <div class="container">
-            <h2 class="section-title">¿Antojo de algo rico?</h2>
-            <p class="section-subtitle">¡PIDE YA Y DISFRUTA SIN MOVERTE DE CASA!</p>
+            <h2 class="contacto-title">¿Antojo de algo rico?</h2>
             
-            <div class="contacto-grid">
+            <div class="contacto-container">
                 <div class="contacto-info">
                     <h3>Información de Contacto</h3>
+                    
                     <div class="contacto-detalle">
-                        <div class="contacto-icono">📞</div>
-                        <div>
+                        <div class="contacto-icono">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contacto-text">
+                            <h4>Teléfono</h4>
                             <p>+51 958 418 698</p>
                         </div>
                     </div>
                     
-                    <a href="https://wa.me/51958418698" class="whatsapp-btn">
-                        <span class="whatsapp-icon">📱</span> Pedir por WhatsApp
-                    </a>
-                    
-                    <div class="social-links">
-                        <a href="https://facebook.com/PolleriåJRC" class="social-link" target="_blank">f</a>
-                        <a href="https://instagram.com/polleriajrc" class="social-link" target="_blank">ig</a>
-                        <a href="https://tiktok.com/@polleriajrc" class="social-link" target="_blank">tt</a>
+                    <div class="delivery-cta">
+                        <h3>¡PIDE YA Y DISFRUTA SIN MOVERTE DE CASA!</h3>
+                        <a href="https://wa.me/51958418698" class="whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
+                        </a>
                     </div>
                     
-                    <p style="margin-top: 20px;">¡SÍGUENOS PARA MAS PROMOCIONES Y SORPRESAS!</p>
+                    <div class="social-links" style="margin-top: 30px; justify-content: flex-start;">
+                        <a href="https://facebook.com/PolleriaJRC" target="_blank" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com/polleriajrc" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com/@polleriajrc" target="_blank" class="social-link">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                    
+                    <p style="margin-top: 20px; color: #FFD700; font-size: 1.2rem;">¡SÍGUENOS PARA MAS PROMOCIONES Y SORPRESAS!</p>
                 </div>
                 
                 <div class="mapa">
-                    <h3>Estamos ubicados en:</h3>
-                    <img src="/api/placeholder/600/300" alt="Ubicación en el mapa" style="width:100%; height:300px; object-fit:cover; border-radius: 8px; margin-top: 20px;">
+                    <img src="img/mapa.jpg" alt="Ubicación de la Pollería JRC">
                 </div>
             </div>
         </div>
@@ -1282,17 +765,25 @@
                 <div class="footer-col">
                     <h4>Síguenos</h4>
                     <div class="social-links">
-                        <a href="https://facebook.com/PolleriaJRC" class="social-link" target="_blank">f</a>
-                        <a href="https://instagram.com/polleriajrc" class="social-link" target="_blank">ig</a>
-                        <a href="https://tiktok.com/@polleriajrc" class="social-link" target="_blank">tt</a>
+                        <a href="https://facebook.com/PolleriaJRC" class="social-link" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com/polleriajrc" class="social-link" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com/@polleriajrc" class="social-link" target="_blank">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="copyright">
-                <p>¡GRACIAS POR PREFERIRNOS!</p>
+                <p style="color: #FFD700; font-size: 1.2rem; font-weight: bold;">¡GRACIAS POR PREFERIRNOS!</p>
                 <p>&copy; 2025 Pollería JRC. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
+    
+    <script src="script.js"></script>
 </body>
 </html>
